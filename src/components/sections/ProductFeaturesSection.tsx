@@ -33,6 +33,12 @@ const products = [
   },
 ];
 
+const pricingInfo = {
+  setupFee: 250,
+  monthlySubscription: 500,
+  annualOffer: "Get 2 months free with an annual subscription!",
+};
+
 export default function ProductFeaturesSection() {
   return (
     <section id="features" className="py-16 md:py-24 bg-background">
@@ -54,6 +60,9 @@ export default function ProductFeaturesSection() {
               description={product.description}
               videoPlaceholderUrl={product.videoPlaceholderUrl}
               imageHint={product.imageHint}
+              setupFee={pricingInfo.setupFee}
+              monthlySubscription={pricingInfo.monthlySubscription}
+              annualOffer={pricingInfo.annualOffer}
             />
           ))}
         </div>

@@ -10,9 +10,21 @@ interface ProductCardProps {
   description: string;
   videoPlaceholderUrl: string;
   imageHint: string;
+  setupFee: number;
+  monthlySubscription: number;
+  annualOffer: string;
 }
 
-export default function ProductCard({ icon: Icon, title, description, videoPlaceholderUrl, imageHint }: ProductCardProps) {
+export default function ProductCard({ 
+  icon: Icon, 
+  title, 
+  description, 
+  videoPlaceholderUrl, 
+  imageHint,
+  setupFee,
+  monthlySubscription,
+  annualOffer 
+}: ProductCardProps) {
   return (
     <Card className="flex flex-col h-full overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 rounded-lg">
       <CardHeader className="flex flex-row items-start gap-4 p-6 bg-muted/30">
@@ -28,8 +40,20 @@ export default function ProductCard({ icon: Icon, title, description, videoPlace
           <CardDescription className="text-base text-foreground/80 mb-4">
             {description}
           </CardDescription>
+          <div className="mt-4 pt-4 border-t border-border/50">
+            <h4 className="text-md font-semibold text-primary mb-2">Pricing</h4>
+            <p className="text-sm text-foreground/80">
+              <strong>Setup Fee:</strong> ${setupFee}
+            </p>
+            <p className="text-sm text-foreground/80">
+              <strong>Subscription:</strong> ${monthlySubscription}/month
+            </p>
+            <p className="text-sm text-foreground/80">
+              <strong>Annual Offer:</strong> {annualOffer}
+            </p>
+          </div>
         </div>
-        <div className="mt-auto aspect-video relative rounded-md overflow-hidden group">
+        <div className="mt-6 aspect-video relative rounded-md overflow-hidden group">
           <Image
             src={videoPlaceholderUrl}
             alt={`${title} explainer video placeholder`}
