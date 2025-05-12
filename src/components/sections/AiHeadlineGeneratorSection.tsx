@@ -1,8 +1,8 @@
 
 "use client";
 
-import { useFormState, useFormStatus } from "react-dom";
-import { useEffect, useRef, useState } from "react";
+import { useActionState, useEffect, useRef, useState } from "react";
+import { useFormStatus } from "react-dom"; // useFormStatus is still from react-dom
 import { generateHeadlinesAction } from "@/app/actions/headlineActions";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -39,7 +39,8 @@ function SubmitButton() {
 }
 
 export default function AiHeadlineGeneratorSection() {
-  const [state, formAction] = useFormState(generateHeadlinesAction, initialState);
+  // Use React.useActionState instead of ReactDOM.useFormState
+  const [state, formAction] = useActionState(generateHeadlinesAction, initialState);
   const { toast } = useToast();
   const formRef = useRef<HTMLFormElement>(null);
   const [generatedHeadlines, setGeneratedHeadlines] = useState<string[] | null>(null);
